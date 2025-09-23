@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!-- -->
+<!-- HCL Confidential -->
+<!-- -->
+<!-- OCO Source Materials -->
+<!-- -->
+<!-- Copyright HCL Technologies Limited 2008, 2022 -->
+<!-- -->
+<!-- The source code for this program is not published or otherwise -->
+<!-- divested of its trade secrets, irrespective of what has been -->
+<!-- deposited with the U.S. Copyright Office. -->
+<!-- -->
+<!-- ***************************************************************** -->
+<config id="searchConfig" version="18" buildlevel="@BUILD_LEVEL@"
+	xmlns="http://www.ibm.com/LotusConnectionsSearch" xmlns:tns="http://www.ibm.com/LotusConnectionsSearch" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/LotusConnectionsSearch search-config.xsd">
+
+	<indexingSchedule />
+
+ 	<indexSettings maxIndexerThreads="1" location="${SEARCH_INDEX_DIR}" allowResumption="true"/>
+
+	<crawlerSettings persistenceLocation="${CRAWLER_PAGE_PERSISTENCE_DIR}"
+		pageSize="500" maxCrawlerThreads="3" />
+
+	<displayTempIndexingDifficultiesMsg enabled="false" />
+	
+	<languageSupport defaultLocale="en">
+		<dictionary locale="en" path="${SEARCH_DICTIONARY_DIR}" />
+	</languageSupport>
+
+	<services>
+		<connService name="activities" contentSource="activitiesContentSource" />
+		<connService name="calendar" contentSource="calendarContentSource" />
+		<connService name="ecm_files" contentSource="ecmFilesContentSource" />
+		<connService name="people_finder" contentSource="peopleFinderContentSource" includeInAllConfigured="true"/>
+	</services>
+
+
+	<contentSources>
+		<seedlist name="activitiesContentSource" pageSize="500" />
+		<seedlist name="calendarContentSource" seedlistLocation="calendar/seedlist/myserver" />
+		<seedlist name="ecmFilesContentSource" seedlistLocation="atom/seedlist/myserver" />
+		<seedlist name="peopleFinderContentSource" providingService="profiles" />
+		<seedlist name="profilesContentSource" pageSize="100" />		
+	</contentSources>
+
+	<attachmentHandling enabled="true"
+		maxAttachmentSize="52428800" downloadFromSharedFS="true">
+		<mimeSupport>
+			<mimeType name="application/msword" processor="" />
+			<mimeType name="application/onenote" processor="" />
+			<mimeType name="application/vnd.ms-excel" processor="" />
+			<mimeType name="application/vnd.ms-powerpoint" processor="" />
+			<mimeType name="application/vnd.visio" processor="" />
+			<mimeType name="application/vnd.ms-project" processor="" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" processor="" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.presentationml.presentation" processor="" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.wordprocessingml.document" processor="" />
+			<mimeType name="application/pdf" processor="" />
+			<mimeType name="application/postscript" processor="" />
+			<mimeType name="application/xhtml+xml" processor="" />
+			<mimeType name="application/xml" processor="" />
+			<mimeType name="application/csv" processor="" />
+			<mimeType name="text/csv" processor="" />
+			<mimeType name="text/htm" processor="" />
+			<mimeType name="text/html" processor="" />
+			<mimeType name="text/richtext" processor="" />
+			<mimeType name="text/plain" processor="" />
+			<mimeType name="text/xml" processor="" />
+			<mimeType name="application/msg" processor="" />
+			<mimeType name="application/eml" processor="" />
+			<mimeType name="message/rfc822" processor="" />
+			<mimeType name="application/rtf" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.text" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.spreadsheet" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.presentation" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.text-master" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.text-web" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.chart" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.formula" processor="" />
+		</mimeSupport>
+		<attachmentCache cacheExpiryTime="30" cacheFileSize="200000" maxCacheEntries="100000" />
+		<attachmentConversion maxConcurrentDownloads="3" maxTempDirSize="104857600" downloadThrottle="0" />
+	</attachmentHandling>
+
+	<sandConfiguration>
+
+
+		<associations>
+			<association name="author" ordinal="0" weight="1.0" />
+			<association name="commenter" ordinal="1" weight="0.5" />
+			<association name="tagger" ordinal="2" weight="0.3" />
+			<association name="mentioned" ordinal="3" weight="0.5" />
+			<association name="reader" ordinal="4" weight="0.2" />
+			<association name="owner" ordinal="5" weight="1.0" />
+			<association name="member" ordinal="6" weight="0.3" />
+			<association name="self" ordinal="7" weight="100.0" />
+			<association name="profilesfriend" ordinal="8" weight="0.05" />
+			<association name="manager" ordinal="9" weight="0.1" />
+			<association name="persontagger" ordinal="10" weight="0.1" />
+			<association name="taggedwith" ordinal="11" weight="0.7" />
+			<association name="taggedby" ordinal="12" weight="0.1" />
+			<association name="1stlevelemployee" ordinal="13" weight="0.1" />
+			<association name="shared" ordinal="14" weight="0.3" />
+			<association name="assignedto" ordinal="15" weight="0.5" />
+			<association name="editor" ordinal="16" weight="0.7" />
+			<association name="advancedexpertise" ordinal="17" weight="1" />
+			<association name="seniorexpertise" ordinal="18" weight="2" />
+			<association name="thoughtleaderexpertise" ordinal="19" weight="3" />
+		</associations>
+
+		<doctypes>
+			<doctype name="Document"/>
+			<doctype name="Document/Blog" />
+			<doctype name="Document/CalendarEvent"/>
+			<doctype name="Document/File"/>
+			<doctype name="Document/ForumThread"/>
+			<doctype name="Document/StatusUpdate"/>
+			<doctype name="Document/Unknown"/>
+			<doctype name="Document/Wiki"/>
+			<doctype name="Group/Activity"/>
+			<doctype name="Group/Community"/>
+			<doctype name="Person"/>
+			<doctype name="Tag"/>
+			<doctype name="Util/BlogComment"/>
+			<doctype name="Util/Bookmark"/>
+			<doctype name="Util/Community"/>
+			<doctype name="Util/ManagerEmployees"/>
+			<doctype name="Util/DepartmentEmployees"/>
+			<doctype name="Util/TaggerTaggedBy"/>
+			<doctype name="Util/TaggerTags"/>
+		</doctypes>
+
+		<p2dassociations>
+			<associationsSet name="expertise">
+				<doctypeEntry name="Document">
+					<association_overrides>
+						<association_override name="tagger"  weight="0.1" />
+					</association_overrides>
+				</doctypeEntry>
+				<doctypeEntry name="Document/ForumThread">
+					<association_overrides>
+						<association_override name="author"  weight="0.3" />
+					</association_overrides>
+				</doctypeEntry>
+				<doctypeEntry name="Person" >
+					<association_overrides>
+						<association_override name="profilesfriend" weight="0.0" />
+						<association_override name="persontagger" weight="0.0" />
+						<association_override name="manager" weight="0.0" />
+					</association_overrides>
+				</doctypeEntry>
+				<doctypeEntry name="Util/ManagerEmployees" >
+					<association_overrides>
+						<association_override name="manager" weight="0.0" />
+						<association_override name="1stlevelemployee" weight="0.0" />
+					</association_overrides>
+				</doctypeEntry>
+				<doctypeEntry name="Util/TaggerTaggedBy" >
+					<association_overrides>
+						<association_override name="taggedby" weight="0.0" />
+					</association_overrides>
+				</doctypeEntry>
+			</associationsSet>
+			<associationsSet name="personalizedBoost">
+                <doctypeEntry name="Person">
+                    <association_overrides>
+                    	<association_override name="author"  weight="-1000.0" />
+                        <association_override name="self"  weight="-1000.0" />
+                        <association_override name="profilesfriend"  weight="-1000.0" />
+                        <association_override name="persontagger"  weight="-1000.0" />
+                        <association_override name="tagger"  weight="-1000.0" />
+                        <association_override name="taggedwith"  weight="-1000.0" />
+                        <association_override name="taggedby"  weight="-1000.0" />
+                        <association_override name="manager" weight="-1000.0"/>
+                        <association_override name="editor" weight="-1000.0"/>
+                        <association_override name="member" weight="-1000.0"/>
+                        <association_override name="shared" weight="-1000.0"/>					
+                    </association_overrides>
+                </doctypeEntry>
+                 <doctypeEntry name="Document/Blog">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />
+                        <association_override name="commenter" weight="0.6" />					
+                    </association_overrides>
+                </doctypeEntry>
+                <doctypeEntry name="Document/File">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />
+                    	<association_override name="editor" weight="0.8" />						
+                    </association_overrides>
+                </doctypeEntry>
+                <doctypeEntry name="Document/ForumThread">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />
+                        <association_override name="commenter" weight="0.6" />					
+                    </association_overrides>
+                </doctypeEntry>
+                <doctypeEntry name="Document/Wiki">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />
+                        <association_override name="commenter" weight="0.6" />					
+                    </association_overrides>
+                </doctypeEntry>
+               <doctypeEntry name="Document">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />	
+                    	<association_override name="tagger" weight="0.4" />					
+                    </association_overrides>                
+                </doctypeEntry>                
+                <doctypeEntry name="Group/Community">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />
+                        <association_override name="commenter" weight="0.6" />					
+                    </association_overrides>                
+                </doctypeEntry>
+                <doctypeEntry name="Group/Activity">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.3" />
+                        <association_override name="commenter" weight="0.6" />					
+                    </association_overrides>                
+                </doctypeEntry>
+                <doctypeEntry name="Util/BlogComment">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.2" />
+                        <association_override name="commenter" weight="0.6" />					
+                    </association_overrides>
+                </doctypeEntry>
+                <doctypeEntry name="Util/Bookmark">
+                    <association_overrides>
+                    	<association_override name="author"  weight="1.2" />	
+                    	<association_override name="tagger" weight="0.4" />					
+                    </association_overrides>
+                </doctypeEntry>
+                <doctypeEntry name="Util/ManagerEmployees" >
+					<association_overrides>
+						<association_override name="manager" weight="0.0" />
+						<association_override name="1stlevelemployee" weight="0.0" />
+					</association_overrides>
+				</doctypeEntry>
+			</associationsSet>
+			<associationsSet name="personalizedBoostSolr">
+                <doctypeEntry name="Person">
+                    <association_overrides>
+                    	<association_override name="author"  weight="21.0" />
+                        <association_override name="commenter"  weight="20.5" />
+                        <association_override name="tagger"  weight="20.3" />
+                        <association_override name="mentioned"  weight="20.5" />
+                        <association_override name="reader"  weight="20.2" />
+                        <association_override name="owner"  weight="21.0" />
+                        <association_override name="member"  weight="20.3" />
+                        <association_override name="profilesfriend" weight="20.05"/>
+                        <association_override name="manager" weight="20.1"/>
+                        <association_override name="persontagger" weight="20.1"/>
+                        <association_override name="taggedwith" weight="20.7"/>
+                        <association_override name="taggedby" weight="20.1"/>
+                        <association_override name="shared" weight="20.3"/>
+                        <association_override name="assignedto" weight="20.5"/>
+                        <association_override name="editor" weight="20.7"/>
+                    </association_overrides>
+                </doctypeEntry>
+			</associationsSet>
+		</p2dassociations>
+
+		<relationships>
+			<relationship doctype="Document" facettype="tagger"
+				name="communitycotagging" norm="1" querytype="tagger" />
+			<relationship doctype="Document/File" facettype="author"
+				name="fileSharing" norm="$evidence" querytype="shared" />
+			<relationship doctype="Document/File" facettype="shared"
+				name="fileShared" norm="$evidence" querytype="author" />
+			<relationship doctype="Person" facettype="persontagger"
+				name="pbt" norm="$evidence" querytype="self" />
+			<relationship doctype="Person" facettype="self" name="pt"
+				norm="$evidence" querytype="persontagger" />
+			<relationship doctype="Util/Community" facettype="member"
+				name="ccms" norm="$evidence" querytype="member" />
+			<relationship doctype="Group/Activity" facettype="assignedto"
+				name="todoout" norm="1" querytype="author" />
+			<relationship doctype="Group/Activity" facettype="member"
+				name="acm" norm="member" querytype="member" />
+			<relationship doctype="Document/File" facettype="commenter"
+				name="coFileCommenting" norm="$evidence" querytype="commenter" />
+			<relationship doctype="Util/TaggerTaggedBy" facettype="taggedby"
+				name="tgb" norm="$evidence" querytype="taggedby" />
+			<relationship doctype="Util/ManagerEmployees" facettype="self"
+				maxvalue="1" name="lm1" norm="1" querytype="1stlevelemployee" />
+			<relationship doctype="Person" facettype="profilesfriend"
+				name="lpfr" norm="1" querytype="self" />
+			<relationship doctype="Document" facettype="tagger"
+				name="ctb" norm="$evidence" querytype="tagger" />
+			<relationship doctype="Group/Activity" facettype="member"
+				name="communityactivitymember" norm="1" querytype="owner" />
+			<relationship doctype="Document/ForumThread" facettype="commenter"
+				name="forumthreaddiscussion" norm="$evidence" querytype="commenter" />
+			<relationship doctype="Util/ManagerEmployees" facettype="1stlevelemployee"
+				maxvalue="1" name="le1" norm="member" querytype="self" />
+			<relationship doctype="Tag" facettype="taggedwith" name="tgw"
+				norm="$evidence" querytype="taggedwith" />
+			<relationship doctype="Tag" facettype="tagger" name="tcu"
+				norm="$evidence" querytype="tagger" />
+			<relationship doctype="Person" facettype="persontagger"
+				name="pctg" norm="$evidence" querytype="persontagger" />
+			<relationship doctype="Group/Activity" facettype="author"
+				name="todoin" norm="1" querytype="assignedto" />
+			<relationship doctype="Person" facettype="profilesfriend"
+				name="lpcfr" norm="$evidence" querytype="profilesfriend" />
+			<relationship doctype="Util/Bookmark" facettype="tagger"
+				name="communitytagging" norm="1" querytype="owner" />
+			<relationship doctype="Document/Wiki" facettype="member"
+				name="wikiCoContribution" norm="$evidence" querytype="member" />
+			<relationship doctype="Document/Blog" facettype="commenter"
+				name="bpcb" norm="$evidence" querytype="author" />
+			<relationship doctype="Document/Blog" facettype="commenter"
+				name="bpcc" norm="$evidence" querytype="commenter" />
+			<relationship doctype="Document/File" facettype="shared"
+				name="fileCoSharing" norm="$evidence" querytype="shared" />
+			<relationship doctype="Util/Community" facettype="member"
+				name="ccmf" norm="member" querytype="member" />
+			<relationship doctype="Document" facettype="author"
+				name="communitydocauthor" norm="1" querytype="owner" />
+			<relationship doctype="Util/ManagerEmployees" facettype="1stlevelemployee"
+				name="sdm" norm="member" querytype="1stlevelemployee" />
+			<relationship doctype="Util/DepartmentEmployees" facettype="member"
+				name="sameDepartment" norm="member" querytype="member" />
+			<relationship doctype="Util/Community" facettype="member"
+				name="communitymembership" norm="member" querytype="self" />
+			<relationship doctype="Document/Blog" facettype="author"
+				name="bpct" norm="$evidence" querytype="commenter" />
+			<relationship doctype="Document/Wiki" facettype="commenter"
+				name="wikiCoCommenting" norm="$evidence" querytype="commenter" />
+
+			<relationship doctype="Document/StatusUpdate" facettype="commenter"
+				name="statusUpdatesCoCommenting" norm="$evidence" querytype="commenter" />
+			<relationship doctype="Document/StatusUpdate" facettype="commenter"
+				name="statusUpdatesCommentedBy" norm="$evidence" querytype="author" />
+			<relationship doctype="Document/StatusUpdate" facettype="author"
+				name="statusUpdatesCommentedTo" norm="$evidence" querytype="commenter" />
+
+			<relationship doctype="Document/StatusUpdate" facettype="commenter"
+				name="statusUpdatesOwnerCommentedBy" norm="$evidence" querytype="owner" />
+			<relationship doctype="Document/StatusUpdate" facettype="owner"
+				name="statusUpdatesOwnerCommentedTo" norm="$evidence" querytype="commenter" />
+			<relationship doctype="Document/StatusUpdate" facettype="author"
+				name="statusUpdatesOwnerPostedBy" norm="$evidence" querytype="owner" />
+			<relationship doctype="Document/StatusUpdate" facettype="owner"
+				name="statusUpdatesOwnerPostedTo" norm="$evidence" querytype="author" />
+
+			<relationship doctype="Document/File" facettype="editor"
+				name="fileAuthorEditedBy" norm="$evidence" querytype="author" />
+			<relationship doctype="Document/File" facettype="author"
+				name="fileEditorAuthoredBy" norm="$evidence" querytype="editor" />
+
+		</relationships>
+
+
+
+		<relationships-sets>
+			<set name="all">
+				<entry key="fileSharing" value="0.1" />
+				<entry key="fileShared" value="0.1" />
+				<entry key="pbt" value="0.01" />
+				<entry key="pt" value="0.1" />
+				<entry key="todoout" value="0.2" />
+				<entry key="acm" value="0.3" />
+				<entry key="coFileCommenting" value="0.1" />
+				<entry key="tgb" value="0.1" />
+				<entry key="lpfr" value="0.5" />
+				<entry key="lm1" value="0.8" />
+				<entry key="ctb" value="0.1" />
+				<entry key="forumthreaddiscussion" value="0.1" />
+				<entry key="le1" value="0.8" />
+				<entry key="tgw" value="0.3" />
+				<entry key="tcu" value="0.1" />
+				<entry key="pctg" value="0.1" />
+				<entry key="todoin" value="0.2" />
+				<entry key="lpcfr" value="0.1" />
+				<entry key="wikiCoContribution" value="0.1" />
+				<entry key="bpcb" value="0.1" />
+				<entry key="bpcc" value="0.1" />
+				<entry key="ccmf" value="0.1" />
+				<entry key="sdm" value="0.5" />
+				<entry key="sameDepartment" value="0.3" />
+				<entry key="bpct" value="0.1" />
+				<entry key="wikiCoCommenting" value="0.1" />
+				<entry key="fileCoSharing" value="0.1" />
+				<!-- STATUS UPDATES -->
+				<entry key="statusUpdatesCoCommenting" value="0.1" />
+				<entry key="statusUpdatesCommentedBy" value="0.1" />
+				<entry key="statusUpdatesCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedBy" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerPostedBy" value="0.2" />
+				<entry key="statusUpdatesOwnerPostedTo" value="0.3" />
+				<!-- ECM File -->
+				<entry key="fileAuthorEditedBy" value="0.1" />
+				<entry key="fileEditorAuthoredBy" value="0.1" />
+			</set>
+			<set name="SocialPath">
+				<entry key="fileSharing" value="0.2" />
+				<entry key="fileShared" value="0.01" />
+				<entry key="pbt" value="0.01" />
+				<entry key="pt" value="0.01" />
+				<entry key="todoout" value="0.2" />
+				<entry key="acm" value="0.2" />
+				<entry key="lpfr" value="0.8" />
+				<entry key="lm1" value="0.8" />
+				<entry key="forumthreaddiscussion" value="0.01" />
+				<entry key="le1" value="0.8" />
+				<entry key="le1" value="0.8" />
+				<entry key="todoin" value="0.2" />
+				<entry key="wikiCoContribution" value="0.2" />
+				<entry key="bpcb" value="0.1" />
+				<entry key="sdm" value="0.5" />
+				<entry key="sameDepartment" value="0.3" />
+				<entry key="bpct" value="0.1" />
+				<entry key="wikiCoCommenting" value="0.01" />
+				<!-- STATUS UPDATES -->
+				<entry key="statusUpdatesOwnerPostedBy" value="0.1" />
+				<entry key="statusUpdatesOwnerPostedTo" value="0.2" />
+				<entry key="statusUpdatesCommentedBy" value="0.01" />
+				<entry key="statusUpdatesCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedBy" value="0.01" />
+				<entry key="statusUpdatesOwnerCommentedTo" value="0.1" />
+				<!-- ECM File -->
+				<entry key="fileAuthorEditedBy" value="0.2" />
+				<entry key="fileEditorAuthoredBy" value="0.2" />
+			</set>
+			<set name="DYK">
+				<entry key="fileSharing" value="0.2" />
+				<entry key="fileShared" value="0.2" />
+				<entry key="pbt" value="0.2" />
+				<entry key="tgw" value="0.01" />
+				<entry key="pt" value="0.4" />
+				<entry key="pctg" value="0.01" />
+				<entry key="tcu" value="0.01" />
+				<entry key="todoout" value="0.2" />
+				<entry key="coFileCommenting" value="0.01" />
+				<entry key="lpcfr" value="0.1" />
+				<entry key="acm" value="0.2" />
+				<entry key="todoin" value="0.2" />
+				<entry key="wikiCoContribution" value="0.2" />
+				<entry key="bpcb" value="0.1" />
+				<entry key="bpcc" value="0.01" />
+				<entry key="tgb" value="0.01" />
+				<entry key="lm1" value="0.8" />
+				<entry key="ctb" value="0.01" />
+				<entry key="forumthreaddiscussion" value="0.01" />
+				<entry key="le1" value="0.8" />
+				<entry key="ccmf" value="0.2" />
+				<entry key="sdm" value="0.5" />
+				<entry key="sameDepartment" value="0.3" />
+				<entry key="wikiCoCommenting" value="0.01" />
+				<entry key="bpct" value="0.1" />
+				<entry key="fileCoSharing" value="0.01" />
+				<!-- STATUS UPDATES -->
+				<entry key="statusUpdatesCoCommenting" value="0.01" />
+				<entry key="statusUpdatesCommentedBy" value="0.1" />
+				<entry key="statusUpdatesCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedBy" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerPostedBy" value="0.1" />
+				<entry key="statusUpdatesOwnerPostedTo" value="0.3" />
+				<!-- ECM File -->
+				<entry key="fileAuthorEditedBy" value="0.2" />
+				<entry key="fileEditorAuthoredBy" value="0.2" />
+			</set>
+			<set name="Recommend">
+				<entry key="fileSharing" value="0.66666" />
+				<entry key="fileShared" value="0.33333" />
+				<entry key="pbt" value="0.66666" />
+				<entry key="pt" value="1.0" />
+				<entry key="todoout" value="1.0" />
+				<entry key="coFileCommenting" value="0.66666" />
+				<entry key="acm" value="1.0" />
+				<entry key="tgb" value="0.66666" />
+				<entry key="lm1" value="1.0" />
+				<entry key="lpfr" value="1.0" />
+				<entry key="ctb" value="0.33333" />
+				<entry key="forumthreaddiscussion" value="0.33333" />
+				<entry key="le1" value="1.0" />
+				<entry key="tgw" value="0.66666" />
+				<entry key="pctg" value="0.66666" />
+				<entry key="tcu" value="0.33333" />
+				<entry key="todoin" value="1.0" />
+				<entry key="lpcfr" value="0.66666" />
+				<entry key="wikiCoContribution" value="1.0" />
+				<entry key="bpcb" value="0.66666" />
+				<entry key="bpcc" value="0.33333" />
+				<entry key="ccmf" value="0.66666" />
+				<entry key="sdm" value="1.0" />
+				<entry key="bpct" value="0.66666" />
+				<entry key="wikiCoCommenting" value="0.66666" />
+				<entry key="fileCoSharing" value="0.66666" />
+				<!-- STATUS UPDATES -->
+				<entry key="statusUpdatesCoCommenting" value="0.33333" />
+				<entry key="statusUpdatesCommentedBy" value="0.66666" />
+				<entry key="statusUpdatesCommentedTo" value="0.66666" />
+				<entry key="statusUpdatesOwnerCommentedBy" value="0.66666" />
+				<entry key="statusUpdatesOwnerCommentedTo" value="0.66666" />
+				<entry key="statusUpdatesOwnerPostedBy" value="0.66666" />
+				<entry key="statusUpdatesOwnerPostedTo" value="1.0" />
+				<!-- ECM File -->
+				<entry key="fileAuthorEditedBy" value="1.0" />
+				<entry key="fileEditorAuthoredBy" value="1.0" />
+			</set>
+			<set name="TIC">
+				<entry key="fileShared" value="0.1" />
+				<entry key="pbt" value="0.1" />
+				<entry key="pt" value="0.1" />
+				<entry key="todoout" value="0.2" />
+				<entry key="acm" value="0.3" />
+				<entry key="coFileCommenting" value="0.1" />
+				<entry key="tgb" value="0.1" />
+				<entry key="lpfr" value="0.1" />
+				<entry key="lm1" value="0.8" />
+				<entry key="ctb" value="0.1" />
+				<entry key="forumthreaddiscussion" value="0.1" />
+				<entry key="le1" value="0.8" />
+				<entry key="tgw" value="0.3" />
+				<entry key="tcu" value="0.1" />
+				<entry key="pctg" value="0.1" />
+				<entry key="todoin" value="0.2" />
+				<entry key="lpcfr" value="0.1" />
+				<entry key="wikiCoContribution" value="0.1" />
+				<entry key="bpcb" value="0.1" />
+				<entry key="bpcc" value="0.1" />
+				<entry key="ccmf" value="0.1" />
+				<entry key="sdm" value="0.5" />
+				<entry key="bpct" value="0.1" />
+				<entry key="wikiCoCommenting" value="0.1" />
+				<entry key="fileCoSharing" value="0.1" />
+				<entry key="fileSharing" value="0.1" />
+				<!-- ECM File -->
+				<entry key="fileAuthorEditedBy" value="0.1" />
+				<entry key="fileEditorAuthoredBy" value="0.1" />
+			</set>
+			<set name="relatedPeople">
+				<entry key="fileSharing" value="0.1" />
+				<entry key="fileShared" value="0.1" />
+				<entry key="pbt" value="0.01" />
+				<entry key="pt" value="0.1" />
+				<entry key="todoout" value="0.2" />
+				<entry key="acm" value="0.3" />
+				<entry key="coFileCommenting" value="0.1" />
+				<entry key="tgb" value="0" />
+				<entry key="lpfr" value="0" />
+				<entry key="lm1" value="0" />
+				<entry key="ctb" value="0.1" />
+				<entry key="forumthreaddiscussion" value="0.1" />
+				<entry key="le1" value="0" />
+				<entry key="tgw" value="0" />
+				<entry key="tcu" value="0" />
+				<entry key="pctg" value="0.1" />
+				<entry key="todoin" value="0.2" />
+				<entry key="lpcfr" value="0" />
+				<entry key="wikiCoContribution" value="0.1" />
+				<entry key="bpcb" value="0.1" />
+				<entry key="bpcc" value="0.1" />
+				<entry key="ccmf" value="0.1" />
+				<entry key="sdm" value="0" />
+				<entry key="sameDepartment" value="0" />
+				<entry key="bpct" value="0.1" />
+				<entry key="wikiCoCommenting" value="0.1" />
+				<entry key="fileCoSharing" value="0.1" />
+				<!-- STATUS UPDATES -->
+				<entry key="statusUpdatesCoCommenting" value="0.1" />
+				<entry key="statusUpdatesCommentedBy" value="0.1" />
+				<entry key="statusUpdatesCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedBy" value="0.1" />
+				<entry key="statusUpdatesOwnerCommentedTo" value="0.1" />
+				<entry key="statusUpdatesOwnerPostedBy" value="0.2" />
+				<entry key="statusUpdatesOwnerPostedTo" value="0.3" />
+				<!-- ECM File -->
+				<entry key="fileAuthorEditedBy" value="0.1" />
+				<entry key="fileEditorAuthoredBy" value="0.1" />
+			</set>
+		</relationships-sets>
+	</sandConfiguration>
+	<backupSettings type="overwrite" location="${SEARCH_INDEX_BACKUP_DIR}" />
+
+	<verboseLogging enabled="true">
+		<seedlistRequests interval="1" />
+		<initial interval="250" />
+		<incrementalCrawling interval="100" />
+		<incrementalBuilding interval="100" />
+	</verboseLogging>
+	
+	<boostSettings>
+		<boost name="content">
+		    <fieldBoost>
+		        <field name="title" boost="3.0" />
+		        <field name="tag" boost="2.0" /> 
+		    </fieldBoost>
+		    <recencyBoost>
+			 	<param name="alpha" value="0.0005"/> 
+			</recencyBoost>
+		</boost>
+		<boost name="contentSolr">
+		    <fieldBoost>
+		        <field name="title" boost="3.0" />
+		        <field name="tag" boost="2.0" /> 
+		    </fieldBoost>
+		    <recencyBoost>
+			 	<param name="a" value="0.09"/> 
+ 				<param name="b" value="0.05"/>
+			</recencyBoost>
+		</boost> 
+	</boostSettings>
+	
+	<highlightingSettings>
+		<highlighting name="ExpertiseEvidence">
+			<highlightField name="tag" />
+		</highlighting>
+	</highlightingSettings>
+	
+	<solrCollectionReplicatorSettings>
+		<deletionDocsCleanup intervalInDays="30" />
+		<replicator name="quickResultsReplication" enabled="false">
+			<solrCollection name="quick-results-collection" />
+			<target zookeeperHosts="REPLICATION.TARGET.HOSTNAME:PORT" />
+		</replicator>
+		<replicator name="contentSearchReplication" enabled="false">
+			<solrCollection name="content-search-collection" />
+			<target zookeeperHosts="REPLICATION.TARGET.HOSTNAME:PORT" />
+		</replicator>
+	</solrCollectionReplicatorSettings>
+	
+	<propertySettings>
+		<property name="contentSearchSolr">
+        	<propertyField name="solr.shadow.search.calls.percentage" value="100" />
+    	</property>
+		<property name="peopleFinder">
+			<propertyField name="peoplefinder.update.enabled" value="true"/>
+			<propertyField name="peoplefinder.update.percentage" value="5"/>
+			<propertyField name="peoplefinder.phonetics.enabled" value="true"/>			
+		</property> 
+		<property name="recommend">
+			<propertyField name="monthsToConsider" value="6"/>
+			<propertyField name="firstQueryPersonCount" value="15"/>
+		</property>
+		<property name="daemonDilution">
+            <propertyField name="workPeriodMillis" value="60000"/>
+            <propertyField name="idlePeriodMillis" value="600000"/>
+        </property>  
+        <property name="indexOptimizations">
+            <propertyField name="useFilesystemCrawlingVersions" value="true"/>
+        </property>  
+        <property name="crawlerTimeouts">
+            <propertyField name="seedlistFetchTimeoutSecs" value="600"/>
+            <propertyField name="crawlSessionTimoutSecs" value="3600"/>
+        </property>
+		<property name="quickResults">
+			<propertyField name="quick.results.solr.indexing.enabled" value="true"/>
+			<propertyField name="quick.results.use.solr.for.queries" value="true"/>
+			<propertyField name="quick.results.elasticsearch.indexing.enabled" value="false"/>
+			<propertyField name="quick.results.elasticsearch.replicas.count" value="2"/>
+			<propertyField name="quick.results.elasticsearch.shards.count" value="8"/>
+			<propertyField name="quick.results.elasticsearch.index.name" value="quickresults"/>
+			<propertyField name="quick.results.connections" value=""/>
+			<propertyField name="quick.results.elasticsearch7.writing.enabled" value="false"/>
+			<propertyField name="quick.results.elasticsearch7.reading.enabled" value="false"/>
+		</property> 
+        <property name="tikaFileConversion">
+            <propertyField name="tikaFileConversion.javaOptions" value=""/>
+            <propertyField name="tikaFileConversion.maxContentSize" value="204800"/>
+            <propertyField name="tikaFileConversion.maxConversionSeconds" value="180"/>
+            <propertyField name="tikaFileConversion.maxDocConversionsPerProcess" value="100"/>
+            <propertyField name="tikaFileConversion.tempDirectory" value="${SEARCH_INDEX_DIR}/filesTemp"/>
+            <propertyField name="tikaFileConversion.deleteTempFiles" value="true"/>
+            <propertyField name="tikaFileConversion.maxConversionThreads" value="5"/>
+            <propertyField name="tikaFileConversion.tikaConfigFileName" value="cnx-tika-config.xml" />
+            <propertyField name="tikaFileConversion.tikaConfigFileLocation" value="" />
+        </property>		             
+	</propertySettings>
+	
+</config>

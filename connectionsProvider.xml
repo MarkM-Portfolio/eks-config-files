@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAuthServiceConfiguration>
+  <parameter name="oauth20.protected.urls" type="ws" customizable="false">
+  </parameter>
+  <parameter name="oauth20.client.provider.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.db.CachedDBClientProvider</value>
+  </parameter>
+  <parameter name="oauth20.token.cache.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.db.CachedDBTokenStore</value>
+  </parameter>
+  <parameter name="oauthjdbc.JDBCProvider" type="cc" customizable="false">
+    <value>jdbc/oauthp</value>
+  </parameter>
+  <parameter name="oauthjdbc.client.table" type="cc" customizable="false">
+    <value>HOMEPAGE.OH2P_CLIENTCFG</value>
+  </parameter>
+  <parameter name="oauthjdbc.token.table" type="cc" customizable="false">
+    <value>HOMEPAGE.OH2P_CACHE</value>
+  </parameter>
+  <parameter name="oauthjdbc.CleanupInterval" type="cc" customizable="true">
+    <value>3600</value>
+  </parameter>
+  <parameter name="oauthjdbc.LimitRefreshToken" type="cc" customizable="true">
+    <value>true</value>
+  </parameter>
+  <parameter name="oauth20.db.token.cache.jndi.tokens" type="ws" customizable="false">
+    <value>ic/services/cache/OAuth20DBTokenCache</value>
+  </parameter>
+  <parameter name="oauth20.db.token.cache.jndi.clients" type="ws" customizable="false">
+    <value>ic/services/cache/OAuth20DBClientCache</value>
+  </parameter>
+  <parameter name="oauth20.max.authorization.grant.lifetime.seconds" type="cc" customizable="true">
+    <value>15768000</value>
+  </parameter>
+  <parameter name="oauth20.code.lifetime.seconds" type="cc" customizable="true">
+    <value>60</value>
+  </parameter>
+  <parameter name="oauth20.code.length" type="cc" customizable="true">
+    <value>30</value>
+  </parameter>
+  <parameter name="oauth20.token.lifetime.seconds" type="cc" customizable="true">
+    <value>43200</value>
+  </parameter>
+  <parameter name="oauth20.access.token.length" type="cc" customizable="true">
+    <value>40</value>
+  </parameter>
+  <parameter name="oauth20.issue.refresh.token" type="cc" customizable="true">
+    <value>true</value>
+  </parameter>
+  <parameter name="oauth20.refresh.token.length" type="cc" customizable="true">
+    <value>50</value>
+  </parameter>
+  <parameter name="oauth20.access.tokentypehandler.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.BaseTokenHandler</value>
+  </parameter>
+  <parameter name="oauth20.mediator.classnames" type="cc" customizable="false">
+  </parameter>
+  <parameter name="oauth20.allow.public.clients" type="cc" customizable="true">
+    <value>connections-outlook-desktop</value>
+    <value>false</value>
+  </parameter>
+  <parameter name="oauth20.grant.types.allowed" type="cc" customizable="false">
+    <value>authorization_code</value>
+    <value>refresh_token</value>
+  </parameter>
+  <parameter name="oauth20.authorization.form.template" type="cc" customizable="true">
+    <value>{oauthSvcUrl}/authorize</value>
+  </parameter>
+  <parameter name="oauth20.authorization.error.template" type="cc" customizable="true">
+    <value>{oauthSvcUrl}/error</value>
+  </parameter>
+  <parameter name="oauth20.authorization.loginURL" type="cc" customizable="true">
+    <value>{oauthSvcUrl}/authenticate</value>
+  </parameter>
+  <parameter name="oauth20.autoauthorize.param" type="ws" customizable="false">
+    <value>_oauth_client_auto_authorize</value>
+  </parameter>
+  <parameter name="oauth20.autoauthorize.clients" type="ws" customizable="true">
+    <value>conn-ee</value>
+    <value>conn-as</value>
+    <value>conn-rte</value>
+    <value>connections_social_mobile</value>
+    <value>kudosboards</value>
+  </parameter>
+  <parameter name="oauth20.token.userClientTokenLimit" type="ws" customizable="true">
+    <value>250</value>
+  </parameter>
+  <parameter name="com.ibm.lconn.oauth.param.provider.inited" type="ws" customizable="true">
+    <value>false</value>
+  </parameter>
+</OAuthServiceConfiguration>

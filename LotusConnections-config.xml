@@ -1,0 +1,547 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ************************************************************** -->
+<!--                                                                -->
+<!-- Licensed Materials - Property of HCL                           -->
+<!--                                                                -->
+<!-- Copyright HCL Technologies Limited 2001, 2022                  -->
+<!--                                                                -->
+<!-- US Government Users Restricted Rights                          -->
+<!--                                                                -->
+<!-- ************************************************************** -->
+<config xmlns="http://www.ibm.com/LotusConnections-config" xmlns:sloc="http://www.ibm.com/service-location" xmlns:tns="http://www.ibm.com/LotusConnections-config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" buildlevel="IC6.0_20230113_0832" id="LotusConnections" xsi:schemaLocation="http://www.ibm.com/LotusConnections-config LotusConnections-config.xsd">
+  <!-- Unique deployment ID that will not change if servers are migrated to another address.
+         Default is "com.ibm.sn:random-id".  Suggested value is reversed domain name of the
+         Connections installation, for example: "com.example.social-intranet"
+    -->
+  <deployment deployment_id="com.ibm.lc.6930e642-f6bb-4d5a-a1ea-933e1e27f5f1"/>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_activitieslink" person_card_service_url_pattern="/service/html/mainpage#dashboard%2Cmyactivities%2Cuserid%3D{userid}%2Cname%3D{displayName}" serviceName="activities" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/activities</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference clusterName="Apps" enabled="true" serviceName="bookmarklet" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/bookmarklet</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_blogslink" person_card_service_url_pattern="/roller-ui/allblogs?userid={userid}" serviceName="blogs" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/blogs</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_communitieslink" person_card_service_url_pattern="/service/html/allcommunities?userid={userid}" serviceName="communities" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/communities</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference profiles_directory_service_extension_enabled="true" serviceName="directory"/>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_dogearlink" person_card_service_url_pattern="/html?userid={userid}" serviceName="dogear" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/dogear</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference clusterName="Apps" enabled="true" serviceName="personTag" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/profiles/ibm_semanticTagServlet</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference acf_config_file="acf-config-nf.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_profilelink" person_card_service_url_pattern="/html/simpleSearch.do?searchFor={userid}&amp;searchBy=userid" serviceName="profiles" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/profiles</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference enabled="false" person_card_service_name_js_eval="generalrs.label_personcard_quickrlink" person_card_service_url_pattern="/allfiles/people/{email}" serviceName="quickr" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/quickr</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="homepage" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/homepage</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="search" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/search</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label.personcard.wikislink" person_card_service_url_pattern="/home/search?uid={userid}&amp;name={displayName}" serviceName="wikis" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/wikis</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_fileslink" person_card_service_url_pattern="/app/person/{userid}" serviceName="files" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/files</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="storageproxy" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/storageproxy</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="news" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/news</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="extensionRegistry" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/appregistry</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="opengraph" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/opengraph</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="thumbnail" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/thumbnail</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="pushnotification" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/push</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="opensocial" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/opensocial</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="opensocialLocked" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/opensocial</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference enabled="false" serviceName="connectionsmail" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/resources/socmail-client</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference enabled="false" isConnectClient="false" serviceName="sametimeProxy" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix/>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="mobile" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/mobile</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" person_card_service_name_js_eval="generalrs.label_personcard_forumlink" person_card_service_url_pattern="/html/search?userid={userid}&amp;name={displayName}" serviceName="forums" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/forums</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="moderation" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/moderation</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="metrics" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/metrics</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="cognos" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/cognos</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference clusterName="Apps" enabled="true" serviceName="sand" ssl_enabled="true">
+    </sloc:serviceReference>
+  <sloc:serviceReference clusterName="Apps" enabled="true" serviceName="webresources" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/resources</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference clusterName="Apps" enabled="true" serviceName="oauth" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/oauth</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference clusterName="Apps" enabled="true" serviceName="help" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/help</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="mediaGallery" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/news/widgets/lw</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="bss" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/manage</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference enabled="false" serviceName="scprofiles" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/contacts/profiles</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="microblogging" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/opensocial</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="deploymentConfig" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="oauthprovider" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/oauth2</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="oidc_op" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>admin_replace</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="ecm_files" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/dm</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="docs" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/docs</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="viewer" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/viewer</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference acf_config_file="acp-configkey__default.xml" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="rte" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/connections/rte</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="eventTracker" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/search</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" enabled="false" serviceName="defdisp" ssl_enabled="false">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/defdisp</sloc:hrefPathPrefix>
+      <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+      <sloc:interService href="admin_replace"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <!-- Uncomment the following serviceReference definition if OrientMe feature is enabled-->
+  
+  <sloc:serviceReference serviceName="orient" enabled="true" ssl_enabled="true" bootstrapHost="c7mmmconnections0.internal.cnx-dev.net" bootstrapPort="admin_replace" clusterName="">
+    <sloc:href>
+        <sloc:hrefPathPrefix>/social</sloc:hrefPathPrefix>
+        <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net" />
+        <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net" />
+    </sloc:href>
+  </sloc:serviceReference>
+    
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="touchpoint" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/touchpoint</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <sloc:serviceReference bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="Apps" enabled="true" serviceName="invite" ssl_enabled="true">
+    <sloc:href>
+      <sloc:hrefPathPrefix>/selfservice</sloc:hrefPathPrefix>
+      <sloc:static href="http://c7mmmconnections0.internal.cnx-dev.net" ssl_href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+      <sloc:interService href="https://c7mmmconnections0.internal.cnx-dev.net"/>
+    </sloc:href>
+  </sloc:serviceReference>
+  <customAuthenticator name="DefaultAuthenticator"/>
+  <allowedContent>
+    <contentType enabled="true" name="FLASH"/>
+  </allowedContent>
+  <!--
+         To enable virus scanning, first delete the empty avFilter element below.
+         Then, uncomment the avFilter in the comment and replace hostname as appropriate
+         Replace myScannerService with the appropriate name for your scanner (eg
+         AVSCAN for Symantec, RESPMOD for McAfee)
+     -->
+  <avFilter>
+    </avFilter>
+  <!-- <avFilter class="AVScannerICAP">
+        <property>av.scanner.servers=myscanner.host.com</property>
+        <property>exception.on.virus=yes</property>
+        <property>av.scanner.service=myScannerService</property>
+        </avFilter>
+    -->
+  <forceConfidentialCommunications enabled="true"/>
+  <exposeEmail enabled="true"/>
+  <!--
+    When enabling the language selector by setting enabled to true, there are
+    options to consider:
+
+    You can use the defaultLanguage attribute to define a fallback language in which to
+    display the user interface if the language specified by the browser is not included
+    in the language elements list. It there are no language elements specified,
+    the language specified in this attribute is the only language in which IBM
+    Connections is displayed.
+
+    Set the cookieName attribute if you want to use a specific, defined name for
+    the cookie used to track the selected language. Default is lcLang.
+
+    Set the cookieDomain if you use multiple host names for Connections features
+    and want to ensure this setting works across all features. For example if your
+    servers are profiles.acme.com and dogear.acme.com set the cookie domain to ".acme.com"
+    (Note the leading period!)
+
+    Set usePermanentCookie to true if you wish to have the user language choice persist
+    across multiple web sessions.
+
+    If you wish to enforce a single language for all users then set the
+    defaultLanguage attribute and do not specify any child language elements, or
+    just the defaultLanguage.
+
+    Specify a language element for each language you want in the selector dropdown.
+    Chose the lang= value from the list below - do not use any other values.
+    As you can see, there is a value for each language supported by Connections.
+    The element value is the name of the language. The name of the language will be displayed
+    in the UI and non-latin characters must be specified in javascript escaped unicode format
+    (as shown below).  At the end of each language element either delete the English name of the
+    language and the surrounding characters, or replace a single dash with a double dash in all instances.
+
+        <language lang="en">English</language>                                           <!-English->
+        <language lang="zh">\u4e2d\u6587 (\u200f\u7b80\u4f53)</language>                 <!-Chinese, Simplified->
+        <language lang="zh_tw">\u4e2d\u6587 (\u200f\u7e41\u9ad4)</language>              <!-Chinese, Traditional->
+        <language lang="ja">\u65e5\u672c\u8a9e</language>                                <!-Japanese->
+        <language lang="ko">\ud55c\uad6d\uc5b4</language>                                <!-Korean->
+        <language lang="fr">Fran\u00e7ais</language>                                     <!-French->
+        <language lang="de">Deutsch</language>                                           <!-German->
+        <language lang="it">Italiano</language>                                          <!-Italian->
+        <language lang="es">Espa\u00f1ol</language>                                      <!-Spanish->
+        <language lang="pt_br">Portugu\u00eas (\u200fBrasil)</language>                  <!-Portuguese, Brazilian->
+        <language lang="cs">\u010ce\u0161tina</language>                                 <!-Czech->
+        <language lang="da">Dansk</language>                                             <!-Danish->
+        <language lang="nl">Nederlands</language>                                        <!-Dutch->
+        <language lang="fi">suomi</language>                                             <!-Finnish->
+        <language lang="el">\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac</language>  <!-Greek->
+        <language lang="hu">Magyar</language>                                            <!-Hungarian->
+        <language lang="no">Norsk (\u200fBokm\u00e5l)</language>                         <!-Norwegian->
+        <language lang="pl">polski</language>                                            <!-Polish->
+        <language lang="pt">Portugu\u00eas (\u200fPortugal)</language>                   <!-Portuguese->
+        <language lang="ru">\u0420\u0443\u0441\u0441\u043a\u0438\u0439</language>        <!-Russian->
+        <language lang="sv">Svenska</language>                                           <!-Swedish->
+        <language lang="sl">sloven\u0161\u010dina</language>                             <!-Slovenian->
+        <language lang="tr">T\u00fcrk\u00e7e</language>                                  <!-Turkish->
+        <language lang="iw">\u05e2\u05d1\u05e8\u05d9\u05ea</language>                    <!-Hebrew->
+        <language lang="ar">\u200f\u0627\u0644\u0639\u0631\u0628\u064a\u0629\u200f</language>  <!-Arabic->
+        <language lang="ca">Catal\u00e0</language>                                       <!-Catalan->
+        <language lang="kk">\u049a\u0430\u0437\u0430\u049b\u0448\u0430</language>        <!-Kazakh->
+        <language lang="th">\u0e44\u0e17\u0e22</language>                                <!-Thai->
+        <language lang="in">Bahasa Indonesia</language>                                  <!-Indonesian->
+        <language lang="bg">\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438</language>   <!-Bulgarian->
+        <language lang="ro">Rom\u00E2n\u0103</language>                                  <!-Romanian->
+        <language lang="sk">Sloven\u010Dina</language>                                   <!-Slovak->
+        <language lang="hr">Hrvatski</language>                                          <!-Croatian->
+		<language lang="eu">Euskara</language>                                           <!-Basque->
+		<language lang="sr">Srpski</language>                                           <!-Serbian->
+     -->
+  <languageSelector cookieDomain="" cookieName="" defaultLanguage="" enabled="true" usePermanentCookie="false">
+    <language lang="en">English</language>
+    <!--English-->
+    <language lang="zh">\u4e2d\u6587 (\u200f\u7b80\u4f53)</language>
+    <!--Chinese, Simplified-->
+    <language lang="fr">Fran\u00e7ais</language>
+    <!--French-->
+    <language lang="ja">\u65e5\u672c\u8a9e</language>
+    <!--Japanese-->
+    <language lang="zh_tw">\u4e2d\u6587 (\u200f\u7e41\u9ad4)</language>
+    <language lang="ko">\ud55c\uad6d\uc5b4</language>
+    <language lang="de">Deutsch</language>
+    <language lang="it">Italiano</language>
+    <language lang="es">Espa\u00f1ol</language>
+    <language lang="pt_br">Portugu\u00eas (\u200fBrasil)</language>
+    <language lang="cs">\u010ce\u0161tina</language>
+    <language lang="nl">Nederlands</language>
+    <language lang="fi">suomi</language>
+    <language lang="pl">polski</language>
+    <language lang="ru">\u0420\u0443\u0441\u0441\u043a\u0438\u0439</language>
+    <language lang="iw">\u05e2\u05d1\u05e8\u05d9\u05ea</language>
+    <language lang="ar">\u200f\u0627\u0644\u0639\u0631\u0628\u064a\u0629\u200f</language>
+    <language lang="ca">Catal\u00e0</language>
+    <language lang="th">\u0e44\u0e17\u0e22</language>
+    <language lang="bg">\u0431\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438</language>
+    <language lang="da">Dansk</language>
+    <language lang="hr">Hrvatski</language>
+    <language lang="hu">Magyar</language>
+    <language lang="no">Norsk</language>
+    <language lang="pt">Portugu\u00eas (\u200fPortugal)</language>
+    <language lang="ro">Rom\u00E2n\u0103</language>
+    <language lang="sk">Sloven\u010Dina</language>
+    <language lang="sl">sloven\u0161\u010dina</language>
+    <language lang="sv">Svenska</language>
+    <language lang="tr">T\u00fcrk\u00e7e</language>
+  </languageSelector>
+  <!-- Search settings -->
+  <languageSensitive enabled="false"/>
+  <ignorePunctuation enabled="false"/>
+  <transactionSetting>
+    <attribute key="Transaction_Max" value="20"/>
+    <attribute key="Queue_Max" value="10"/>
+  </transactionSetting>
+  <seedlistSettings allowUnsecuredTransfer="false">
+    <attribute key="maximumPageSize" value="1000"/>
+    <attribute key="maximumIncrementalQuerySpanInDays" value="30"/>
+  </seedlistSettings>
+  <useRichTextEditorInBookmarklet enabled="false"/>
+  <!-- Support for 1 to 2 mapping. This is a search config setting that controls composition of unicode characters
+         from decomposed forms like the base character and its accents or other modifiers. -->
+  <oneToTwoMapping enabled="false"/>
+  <dynamicHosts enabled="true">
+    <host href="http://c7mmmweb0.cnx-dev.net" ssl_href="https://c7mmmweb0.cnx-dev.net"/>
+  </dynamicHosts>
+  <resources>
+    </resources>
+  <sessionCookies>
+    <cookieName key="JSESSIONID"/>
+  </sessionCookies>
+  <versionStamp value="20230116.131047"/>
+  <!-- Limited to 20 characters. Not applicable to multi-tenant. -->
+  <organization name=""/>
+  <xFrameOptions type="SAMEORIGIN">
+    <uriWhiteList>
+      <uriPattern>^/connections/opensocial/gadgets/ifr$</uriPattern>
+      <uriPattern>^/connections/resources/web/ic-share/fileviewer/embed.html$</uriPattern>
+      <uriPattern>^/files/templates/iframepicker.jsp$</uriPattern>
+    </uriWhiteList>
+  </xFrameOptions>
+  <loginRedirectWhitelist enabled="false">
+    <domain>admin_replace.com</domain>
+  </loginRedirectWhitelist>
+  <hostWhitelist enabled="false">
+    <domain>admin_replace.com</domain>
+  </hostWhitelist>
+  <properties>
+    <genericProperty name="ignore.lang.param">true</genericProperty>
+    <genericProperty name="elasticsearch.eSmajorVersion">7</genericProperty>
+    <genericProperty name="people.typeahead">enabled</genericProperty>
+    <genericProperty name="lconn.core.WidgetPlacement.communities.useCRE">true</genericProperty>
+    <genericProperty name="lconn.core.WidgetPlacement.communities.limitedDND">true</genericProperty>
+    <genericProperty name="lconn.core.WidgetPlacement.communities.freeLayout">false</genericProperty>
+    <genericProperty name="lconn.core.WidgetPlacement.profiles.useCRE">true</genericProperty>
+    <genericProperty name="filesMediaView">enabled</genericProperty>
+    <genericProperty name="ccmMediaView">enabled</genericProperty>
+    <genericProperty name="visitorModelEnabled">true</genericProperty>
+    <genericProperty name="com.ibm.lconn.files.api.throttler.filesync">50</genericProperty>
+    <genericProperty name="com.ibm.lconn.communities.includePublicRole">true</genericProperty>
+    <genericProperty name="shindig.config.container.overrides">{"atom.feed" : {"isEntryContentElementForced" : false, "isEntrySummaryElementForced" : true}}</genericProperty>
+    <genericProperty name="com.ibm.connections.ecm.OAuthEnabled">enabled</genericProperty>
+    <genericProperty name="com.ibm.lconn.files.platform.throttler.rendition">4</genericProperty>
+    <genericProperty name="com.ibm.connections.set.cookies.httpOnly">true</genericProperty>
+    <genericProperty name="com.ibm.docs.types.view">dot,dotx,ott,pot,potx,otp,xlt,xltx,ots,rtf,txt</genericProperty>
+    <genericProperty name="com.ibm.docs.types.edit">xlsm</genericProperty>
+    <genericProperty name="homepage.gettingstarted.bypass">true</genericProperty>
+    <genericProperty name="quickResultsEnabled">true</genericProperty>
+    <!-- <genericProperty name="actioncenter">enabled</genericProperty> -->
+    <genericProperty name="actioncenter">disabled</genericProperty>
+    <genericProperty name="com.ibm.orient.isHomepageSwitcherEnabled">false</genericProperty>
+    <genericProperty name="com.ibm.orient.isOrientHomepage">false</genericProperty>
+    <genericProperty name="ics.ui.assetPath">{deploymentConfig}</genericProperty>
+    <genericProperty name="ics.ui.isCNX8UXEnabled">true</genericProperty>
+    <genericProperty name="ics.ui.isCNX8UXUserSetting">true</genericProperty>
+    <genericProperty name="com.ibm.connections.SSLProtocol">TLSv1.2</genericProperty>
+    <genericProperty name="icec.light">true</genericProperty>
+    <genericProperty name="files.ownership.transfer.enabled">true</genericProperty>
+    <genericProperty name="com.hcl.connections.rte.acceptIncomingOAuthTokens">false</genericProperty>
+    <genericProperty name="com.hcl.connections.rte.acceptIncomingOAuthTokensFromSubject">false</genericProperty>
+    <genericProperty name="com.hcl.connections.rte.azureEnabled">false</genericProperty>
+    <genericProperty name="componentPackInstalled">true</genericProperty>
+    <genericProperty name="appreg.hostname">c7mmmconnections0.internal.cnx-dev.net</genericProperty>
+    <genericProperty name="appreg.protocol">https</genericProperty>
+  </properties>
+</config>

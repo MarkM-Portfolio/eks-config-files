@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- HCL Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright HCL Technologies 2011, 2021                             -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- 5724-S68                                                          -->
+<OAuthServiceConfiguration>
+  <parameter name="oauth20.protected.urls" type="ws" customizable="false">
+  </parameter>
+  
+  <!-- Parameters for JDBC database stores -->
+  <parameter name="oauth20.client.provider.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.db.CachedDBClientProvider</value>
+  </parameter>
+  <parameter name="oauth20.token.cache.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.db.CachedDBTokenStore</value>
+  </parameter>
+  <parameter name="oauthjdbc.JDBCProvider" type="cc" customizable="false">
+    <value>jdbc/oauthp</value>
+  </parameter>
+  <parameter name="oauthjdbc.client.table" type="cc" customizable="false">
+    <value>HOMEPAGE.OH2P_CLIENTCFG</value>
+  </parameter>
+  <parameter name="oauthjdbc.token.table" type="cc" customizable="false">
+    <value>HOMEPAGE.OH2P_CACHE</value>
+  </parameter>
+  <parameter name="oauthjdbc.CleanupInterval" type="cc" customizable="true">
+    <value>3600</value>
+  </parameter>
+  <parameter name="oauthjdbc.LimitRefreshToken" type="cc" customizable="true">
+    <value>true</value>
+  </parameter>
+  <parameter name="oauth20.db.token.cache.jndi.tokens" type="ws" customizable="false">
+    <value>ic/services/cache/OAuth20DBTokenCache</value>
+  </parameter>
+  <parameter name="oauth20.db.token.cache.jndi.clients" type="ws" customizable="false">
+    <value>ic/services/cache/OAuth20DBClientCache</value>
+  </parameter>
+  <!-- -->
+  <!-- Parameters for in-memory stores -->
+  <!--parameter name="oauth20.client.provider.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.BaseClientProvider</value>
+  </parameter>
+  <parameter name="oauth20.token.cache.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.BaseCache</value>
+  </parameter>
+  <parameter name="oauth20.token.cache.jndi.tokens" type="ws" customizable="false">
+    <value>services/cache/OAuth20MemTokenCache</value>
+  </parameter>
+  <parameter name="oauth20.token.cache.jndi.users" type="ws" customizable="false">
+    <value>services/cache/OAuth20MemTokenOwnerCache</value>
+  </parameter-->
+  <!-- -->
+  <parameter name="oauth20.max.authorization.grant.lifetime.seconds" type="cc" customizable="true">
+    <value>15768000</value>
+  </parameter>
+  <parameter name="oauth20.code.lifetime.seconds" type="cc" customizable="true">
+    <value>60</value>
+  </parameter>
+  <parameter name="oauth20.code.length" type="cc" customizable="true">
+    <value>30</value>
+  </parameter>
+  <parameter name="oauth20.token.lifetime.seconds" type="cc" customizable="true">
+    <value>43200</value>
+  </parameter>
+  <parameter name="oauth20.access.token.length" type="cc" customizable="true">
+    <value>40</value>
+  </parameter>
+  <parameter name="oauth20.issue.refresh.token" type="cc" customizable="true">
+    <value>true</value>
+  </parameter>
+  <parameter name="oauth20.refresh.token.length" type="cc" customizable="true">
+    <value>50</value>
+  </parameter>
+  <parameter name="oauth20.access.tokentypehandler.classname" type="cc" customizable="false">
+    <value>com.ibm.ws.security.oauth20.plugins.BaseTokenHandler</value>
+  </parameter>
+  <parameter name="oauth20.mediator.classnames" type="cc" customizable="false">
+  </parameter>
+  <parameter name="oauth20.allow.public.clients" type="cc" customizable="true">
+    <value>false</value>
+  </parameter>
+  <parameter name="oauth20.grant.types.allowed" type="cc" customizable="false">
+    <value>authorization_code</value>
+    <!--value>password</value-->
+    <value>refresh_token</value>
+    <!--value>client_credentials</value-->
+    <!--value>implicit</value-->
+  </parameter>
+  <parameter name="oauth20.authorization.form.template" type="cc" customizable="true">
+    <value>{oauthSvcUrl}/authorize</value>
+  </parameter>
+  <parameter name="oauth20.authorization.error.template" type="cc" customizable="true">
+    <value>{oauthSvcUrl}/error</value>
+  </parameter>
+  <parameter name="oauth20.authorization.loginURL" type="cc" customizable="true">
+    <value>{oauthSvcUrl}/authenticate</value>
+  </parameter>
+  <!-- Optional audit handler, uncomment or add a plugin to enable
+      <parameter name="oauth20.audithandler.classname" type="cc" customizable="true">
+        <value>com.ibm.oauth.core.api.audit.XMLFileOAuthAuditHandler</value>
+      </parameter>
+      <parameter name="xmlFileAuditHandler.filename" type="cc" customizable="true">
+        <value>D:\oauth20Audit.xml</value>
+      </parameter>
+  -->
+  
+  <!-- Parameters for TAI configuration. These can optionally be added as TAI Custom properties instead, which gives more flexibility. 
+                  Additional custom TAI properties can be added as parameters by specifying type="tai"
+      <parameter name="filter" type="tai" customizable="true">
+        <value>request-url%=snoop</value>
+      </parameter>
+      <parameter name="oauthOnly" type="tai" customizable="true">
+        <value>false</value>
+      </parameter>
+  -->
+  
+  <!-- Auto-authorize: optional endpoint param and client whitelist to skip the authorization step for privileged clients.
+                  Set this param to "true" in the request-->
+      <parameter name="oauth20.autoauthorize.param" type="ws" customizable="false">
+        <value>_oauth_client_auto_authorize</value>
+      </parameter>
+      <parameter name="oauth20.autoauthorize.clients" type="ws" customizable="true">
+        <!-- Add client ids of OAuth clients that should use auto-authorization -->
+        <value>conn-ee</value>
+        <value>conn-as</value>
+        <value>conn-rte</value>
+        <value>connections_social_mobile</value>
+      <!--
+        <value>inotes</value>
+      -->
+      </parameter>
+  
+  <!-- optional values to replace client URI strings, for dynamic hostnames. Variables must use '${VAR_NAME}' syntax
+      <parameter name="oauth20.client.uri.substitutions" type="ws" customizable="false">
+        <value>${WEBSPHERE_OAUTH_PROVIDER_AUTHORITY}</value>
+      </parameter>
+  -->
+  
+  <!-- mediator for resource owner credential: optional mediator to validate resource owner credential against current active user registry>
+      <parameter name="oauth20.mediator.classnames" type="cc" customizable="true">
+        <value>com.ibm.ws.security.oauth20.mediator.ResourceOwnerValidationMedidator</value>
+      </parameter>  
+   -->
+   
+   <!-- optional limit for the number of tokens a user/client/provider combination can be issued -->
+      <parameter name="oauth20.token.userClientTokenLimit" type="ws" customizable="true">
+        <value>250</value>
+      </parameter>
+   
+   <!-- Custom properties for Connections BEGIN -->
+   <!-- Flag to avoid repeated initialization of runtime parameters -->
+      <parameter name="com.ibm.lconn.oauth.param.provider.inited" type="ws" customizable="true">
+        <value>false</value>
+      </parameter>
+   <!-- Custom properties for Connections END -->
+</OAuthServiceConfiguration>

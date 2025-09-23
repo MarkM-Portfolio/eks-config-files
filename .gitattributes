@@ -1,0 +1,3 @@
+*.conf linguist-language=Conf linguist-vendored=false
+*.gitignore linguist-language=Git linguist-vendored=false
+*.xml linguist-language=Xml linguist-vendored=false
